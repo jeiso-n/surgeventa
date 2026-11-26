@@ -1,0 +1,77 @@
+@import "tailwindcss";
+
+:root {
+  --canvas: #f6f7f8;
+  --surface: #ffffff;
+  --surface-subtle: #f0f2f5;
+  --border: #e2e6ec;
+  --border-strong: #cdd4de;
+  --foreground: #11161d;
+  --muted: #525d6c;
+  --brand: #0d6e6e;
+  --brand-hover: #0a5858;
+  --brand-soft: #e8f5f4;
+  --brand-foreground: #ffffff;
+  --success: #157f4b;
+  --success-soft: #eaf7f0;
+  --warning: #a15c07;
+  --warning-soft: #fef6e7;
+  --danger: #b42318;
+  --danger-soft: #fef0ee;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --canvas: #0c0e12;
+    --surface: #13171e;
+    --surface-subtle: #1a1f29;
+    --border: #252c38;
+    --border-strong: #343d4e;
+    --foreground: #f2f4f7;
+    --muted: #98a2b3;
+    --brand: #2bb5ad;
+    --brand-hover: #3ac8c0;
+    --brand-soft: #112a2b;
+    --brand-foreground: #071b1b;
+    --success: #34c77b;
+    --success-soft: #0f291c;
+    --warning: #f5b942;
+    --warning-soft: #2c200a;
+    --danger: #f97066;
+    --danger-soft: #2f1414;
+  }
+}
+
+@theme inline {
+  --color-canvas: var(--canvas);
+  --color-surface: var(--surface);
+  --color-surface-subtle: var(--surface-subtle);
+  --color-border: var(--border);
+  --color-border-strong: var(--border-strong);
+  --color-foreground: var(--foreground);
+  --color-muted: var(--muted);
+  --color-brand: var(--brand);
+  --color-brand-hover: var(--brand-hover);
+  --color-brand-soft: var(--brand-soft);
+  --color-brand-foreground: var(--brand-foreground);
+  --color-success: var(--success);
+  --color-success-soft: var(--success-soft);
+  --color-warning: var(--warning);
+  --color-warning-soft: var(--warning-soft);
+  --color-danger: var(--danger);
+  --color-danger-soft: var(--danger-soft);
+  --font-sans: var(--font-jakarta);
+  --font-mono: var(--font-jetbrains);
+}
+
+html,
+body {
+  background-color: var(--canvas);
+  color: var(--foreground);
+  font-family: var(--font-jakarta), ui-sans-serif, system-ui, -apple-system, sans-serif;
+}
+
+*:focus-visible {
+  outline: 2px solid var(--brand);
+  outline-offset: 2px;
+}
