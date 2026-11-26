@@ -1,6 +1,15 @@
 import { connection } from "next/server";
-import { CheckCircle2, Clock3, Database, KeyRound, Lock, Server } from "lucide-react";
+import {
+  AlertTriangle,
+  CheckCircle2,
+  Clock3,
+  Database,
+  KeyRound,
+  Lock,
+  Server,
+} from "lucide-react";
 import { getEnvironmentReadiness } from "@/lib/env";
+import { checkDatabaseHealth } from "@/server/db";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent } from "@/components/ui/card";
 
@@ -8,43 +17,60 @@ interface StatusMetric {
   label: string;
   value: string;
   detail: string;
-  ready: boolean;
+  state: "ready" | "pending" | "error";
   icon: React.ReactNode;
 }
 
 export async function ReadinessStrip() {
   await connection();
   const readiness = getEnvironmentReadiness();
+  const dbHealth = await checkDatabaseHealth();
+
+  const dbState: StatusMetric["state"] = !dbHealth.configured
+    ? "pending"
+    : dbHealth.connected
+      ? "ready"
+      : "error";
+
+  const dbValue = !dbHealth.configured
+    ? "Awaiting Credentials"
+    : dbHealth.connected
+      ? "Connected"
+      : "Connection Error";
+
+  const dbDetail = !dbHealth.configured
+    ? "Provide DATABASE_URL before Milestone 2"
+    : dbHealth.connected
+      ? `PostgreSQL ${dbHealth.serverVersion?.split(" ")[0] ?? ""} · ${dbHealth.schemaTablesCount ?? 0}/6 tables · ${dbHealth.latencyMs ?? 0}ms`
+      : (dbHealth.error ?? "Unable to reach Neon PostgreSQL");
 
   const metrics: StatusMetric[] = [
     {
       label: "Application Runtime",
       value: "Online",
       detail: "Next.js App Router · TypeScript strict",
-      ready: true,
+      state: "ready",
       icon: <Server className="h-4 w-4" aria-hidden="true" />,
     },
     {
       label: "Neon PostgreSQL",
-      value: readiness.databaseConfigured ? "Configured" : "Awaiting Credentials",
-      detail: readiness.databaseConfigured
-        ? "Pooled connection string present"
-        : "Provide DATABASE_URL before Milestone 2",
-      ready: readiness.databaseConfigured,
+      value: dbValue,
+      detail: dbDetail,
+      state: dbState,
       icon: <Database className="h-4 w-4" aria-hidden="true" />,
     },
     {
       label: "Token Encryption",
       value: readiness.tokenEncryptionKeyValid ? "AES-256-GCM Ready" : "Key Not Set",
       detail: "64-char hex key for OAuth tokens at rest",
-      ready: readiness.tokenEncryptionKeyValid,
+      state: readiness.tokenEncryptionKeyValid ? "ready" : "pending",
       icon: <Lock className="h-4 w-4" aria-hidden="true" />,
     },
     {
       label: "Session Auth Secret",
       value: readiness.authSecretConfigured ? "Configured" : "Pending Setup",
-      detail: "Required in Milestone 2 authentication",
-      ready: readiness.authSecretConfigured,
+      detail: "Ready for Milestone 2 authentication",
+      state: readiness.authSecretConfigured ? "ready" : "pending",
       icon: <KeyRound className="h-4 w-4" aria-hidden="true" />,
     },
   ];
@@ -59,13 +85,27 @@ export async function ReadinessStrip() {
                 {item.icon}
                 {item.label}
               </span>
-              <Badge variant={item.ready ? "success" : "neutral"}>
-                {item.ready ? (
+              <Badge
+                variant={
+                  item.state === "ready"
+                    ? "success"
+                    : item.state === "error"
+                      ? "danger"
+                      : "neutral"
+                }
+              >
+                {item.state === "ready" ? (
                   <CheckCircle2 className="h-3 w-3" aria-hidden="true" />
+                ) : item.state === "error" ? (
+                  <AlertTriangle className="h-3 w-3" aria-hidden="true" />
                 ) : (
                   <Clock3 className="h-3 w-3" aria-hidden="true" />
                 )}
-                {item.ready ? "Ready" : "Pending"}
+                {item.state === "ready"
+                  ? "Ready"
+                  : item.state === "error"
+                    ? "Error"
+                    : "Pending"}
               </Badge>
             </div>
             <div>
