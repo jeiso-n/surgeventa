@@ -4,7 +4,7 @@ Surgevanta is built in small, independently verifiable milestones. Every milesto
 
 | Milestone | Scope | Status |
 | --- | --- | --- |
-| **M1 — Project Discovery & Foundation** | Next.js 16 + TypeScript + Tailwind v4 foundation, Drizzle PostgreSQL schema & portable client, AES-256-GCM token cipher, 9-platform verified capability registry, initial design system & dashboard shell, `.env.example`, full documentation, Vitest suite, Git initialization. | **In Verification (Blocked on GitHub remote URL for push)** |
+| **M1 — Project Discovery & Foundation** | Next.js 16 + TypeScript + Tailwind v4 foundation, Drizzle PostgreSQL schema & portable client, AES-256-GCM token cipher, 9-platform verified capability registry, initial design system & dashboard shell, `.env.example`, full documentation, Vitest suite, Git initialization & GitHub push. | **Completed & Verified** |
 | **M2 — Neon Database, Auth & Settings** | Connect Neon PostgreSQL via user credentials, run initial Drizzle migrations, integrate Better Auth (email/password + revocable DB sessions), route protection, user profile, timezone & publishing defaults settings screen, Playwright E2E smoke test. | Pending |
 | **M3 — Unified Composer, Media Library & Validation** | Pluggable `StorageProvider` (local dev storage first), secure media upload/metadata inspection, unified post composer, per-platform caption overrides, live character/media validation engine, real platform previews, draft persistence. | Pending |
 | **M4 — Social Accounts & First Verified Direct Integrations** | OAuth state/PKCE framework, encrypted token lifecycle (refresh + expiry/revocation handling), Social Accounts management UI, first direct free-tier adapters (**LinkedIn** & **YouTube**, followed by **Threads/Meta**), plus **Assisted Publishing** handoff flows for **X** and **Reddit**. | Pending |
@@ -22,4 +22,4 @@ Surgevanta is built in small, independently verifiable milestones. Every milesto
 - [x] Complete `.env.example` with safe placeholders only (zero secrets).
 - [x] Automated unit tests (Vitest), TypeScript strict check, ESLint, and Next.js production build.
 - [x] Canonical `current report.md` reflecting verified repository state.
-- [ ] Connected GitHub remote and verified push (pending repository URL from product owner).
+- [x] Connected GitHub remote (`https://github.com/jeiso-n/surgeventa.git`) and verified push on `main`.

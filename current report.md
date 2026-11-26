@@ -2,7 +2,7 @@
 
 **Last Updated:** 2026-11-26  
 **Active Milestone:** Milestone 1 — Project Discovery & Foundation  
-**Status:** Foundation built & verified locally; **GitHub push blocked pending remote repository URL**  
+**Status:** **Completed & verified on GitHub** (`origin/main`)  
 **ChatGPT Independent Review Verdict:** Pending review
 
 ---
@@ -76,25 +76,22 @@ No Neon credentials have been invented or connected yet, and no fake integration
 
 ## 5. Known Issues, Blockers & Risks
 
-1. **GitHub Remote Blocker (Blocks Milestone 1 Push):**
-   - `d:\Projects\surgeventa` started as an empty directory with no `.git` repository and no configured GitHub remote.
-   - `gh` CLI is not installed, and read-only checks against `https://github.com/jeisbyte/surgeventa.git` and `https://github.com/jeisbyte/surgevanta.git` both returned `Repository not found`.
-   - **Action needed:** Product owner must create the GitHub repository (or share the exact HTTPS/SSH URL of an existing repository) so `origin` can be added and the local `main` commit pushed and verified.
-2. **Neon PostgreSQL Credentials Pending:** Required before Milestone 2 (`DATABASE_URL` pooled + `DATABASE_URL_UNPOOLED` direct).
-3. **API & Infrastructure Risks Documented:** X pay-per-use pricing (assisted workflow default), Reddit closed self-serve API registration (assisted workflow default), Meta/TikTok/Pinterest/YouTube review/audit gates, Cloudflare R2 credit-card activation requirement, and Vercel Hobby once-per-day cron limit (all mitigated in [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md)).
-4. **Moderate `npm audit` Notice in Dev Tooling:** `npm install` reported 4 moderate vulnerabilities in transitive dev tooling (`drizzle-kit` / `esbuild-kit` chain). Runtime production dependencies had `0` vulnerabilities. Will track during Milestone 2 dependency review.
+1. **Neon PostgreSQL Credentials Pending:** Required before starting Milestone 2 (`DATABASE_URL` pooled + `DATABASE_URL_UNPOOLED` direct in local `.env.local`, never committed).
+2. **API & Infrastructure Risks Documented:** X pay-per-use pricing (assisted workflow default), Reddit closed self-serve API registration (assisted workflow default), Meta/TikTok/Pinterest/YouTube review/audit gates, Cloudflare R2 credit-card activation requirement, and Vercel Hobby once-per-day cron limit (all mitigated in [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md)).
+3. **Moderate `npm audit` Notice in Dev Tooling:** `npm install` reported 4 moderate vulnerabilities in transitive dev tooling (`drizzle-kit` / `esbuild-kit` chain). Runtime production dependencies had `0` vulnerabilities. Will track during Milestone 2 dependency review.
 
 ---
 
 ## 6. Git Status
 
-- **Branch:** `main` (initialized locally)
-- **Remote `origin`:** Not configured yet (blocked pending repository URL from product owner)
-- **Push Status:** **Not pushed to GitHub yet** (local checkpoint commit only; will push immediately once remote URL is provided)
+- **Repository Remote (`origin`):** `https://github.com/jeiso-n/surgeventa.git`
+- **Branch:** `main` tracking `origin/main`
+- **Foundation Commit Verified on Remote:** `a8287081d80693b559c1a4e9063fa4a3c3cc335e` (`feat(foundation): establish Surgevanta architecture, design system, and milestone 1 docs`)
+- **Push Status:** **Pushed & verified on `origin/main`**
 
 ---
 
 ## 7. Next Actions
 
-1. Receive GitHub repository URL from product owner, configure `origin`, push `main`, verify remote commit visibility, and update Section 6 of this report with the verified push details.
-2. Begin **Milestone 2 — Neon Database, Auth & Settings** once Neon PostgreSQL connection strings (`DATABASE_URL` and `DATABASE_URL_UNPOOLED`) and preferred deployment/media storage choice are confirmed.
+1. Product owner creates a free Neon PostgreSQL project (no credit card required) and supplies the pooled (`DATABASE_URL`) and direct (`DATABASE_URL_UNPOOLED`) connection strings for local `.env.local`.
+2. Begin **Milestone 2 — Neon Database, Auth & Settings**: run initial Drizzle migrations on Neon, integrate Better Auth (email/password + database sessions), route protection, and user profile/timezone/publishing-defaults Settings module with automated tests.
