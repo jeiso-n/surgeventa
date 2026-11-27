@@ -15,7 +15,7 @@ export async function GET() {
   return Response.json(
     {
       status,
-      app: "Surgevanta",
+      app: "Surgeventa",
       milestone: "M1-foundation",
       timestamp: new Date().toISOString(),
       readiness,

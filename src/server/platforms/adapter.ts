@@ -33,7 +33,7 @@ export interface AssistedHandoffResult {
 export type PublishExecutionResult = DirectPublishResult | AssistedHandoffResult;
 
 /**
- * Contract implemented by every social platform integration in Surgevanta.
+ * Contract implemented by every social platform integration in Surgeventa.
  * Guarantees uniform validation, capability introspection, and honest
  * differentiation between direct official API publishing and assisted handoffs.
  */

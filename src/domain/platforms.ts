@@ -37,7 +37,7 @@ export interface PlatformCapability {
 }
 
 /**
- * Authoritative registry of Surgevanta's 9 target platforms and their verified
+ * Authoritative registry of Surgeventa's 9 target platforms and their verified
  * free-tier / zero-spending publishing constraints.
  *
  * Never misrepresent an integration as active or automated when official free
@@ -179,14 +179,14 @@ export const TARGET_PLATFORMS: readonly PlatformCapability[] = [
     zeroSpendCompatible: true,
     personalAccountSupported: true,
     approvalRequirement:
-      "Free publishing tier has been discontinued in favor of pay-per-use credits ($0.015/post, $0.20/post with URL). Surgevanta uses an Assisted workflow at $0.",
+      "Free publishing tier has been discontinued in favor of pay-per-use credits ($0.015/post, $0.20/post with URL). Surgeventa uses an Assisted workflow at $0.",
     accountEligibility: "Any X account via manual composer handoff.",
     rateOrQuotaSummary: "Zero API cost via assisted handoff (official API requires paid credits).",
     maxCaptionLength: 280,
     supportedMedia: ["text", "image", "video", "link"],
     analyticsSupported: "unavailable_in_free_tier",
     limitationsSummary:
-      "Automated publishing disabled by default to enforce the strict zero-spending constraint. Surgevanta validates copy/media and opens a ready-to-post handoff.",
+      "Automated publishing disabled by default to enforce the strict zero-spending constraint. Surgeventa validates copy/media and opens a ready-to-post handoff.",
   },
   {
     id: "reddit",

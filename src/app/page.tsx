@@ -30,7 +30,7 @@ export default function DashboardPage() {
             Multi-platform publishing, built transparently
           </h2>
           <p className="text-sm text-muted max-w-2xl leading-relaxed">
-            Surgevanta is initialized on a portable Next.js + PostgreSQL architecture. Connect Neon
+            Surgeventa is initialized on a portable Next.js + PostgreSQL architecture. Connect Neon
             PostgreSQL credentials next to enable authentication, account storage, and draft
             persistence in Milestone 2.
           </p>

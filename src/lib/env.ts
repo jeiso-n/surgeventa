@@ -8,7 +8,7 @@ const nonEmptyOptional = z
 
 const envSchema = z.object({
   NODE_ENV: z.enum(["development", "test", "production"]).default("development"),
-  NEXT_PUBLIC_APP_NAME: z.string().trim().min(1).default("Surgevanta"),
+  NEXT_PUBLIC_APP_NAME: z.string().trim().min(1).default("Surgeventa"),
   NEXT_PUBLIC_APP_URL: z.string().url().default("http://localhost:3000"),
   DEFAULT_TIMEZONE: z.string().trim().min(1).default("UTC"),
 

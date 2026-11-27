@@ -1,8 +1,8 @@
-# Surgevanta — Social Platform Integrations Research & Status
+# Surgeventa — Social Platform Integrations Research & Status
 
 This document records verified official developer API requirements, OAuth constraints, account eligibility, app review gates, rate/quota limits, and zero-spending compliance for all 9 target platforms.
 
-**Policy:** Surgevanta uses official APIs only. Where a platform has discontinued free automated publishing or closed open self-serve API registration, Surgevanta implements an honest **Assisted Publishing** workflow (validated caption + media preparation + deep-link handoff) rather than breaking the zero-spend rule or scraping private APIs.
+**Policy:** Surgeventa uses official APIs only. Where a platform has discontinued free automated publishing or closed open self-serve API registration, Surgeventa implements an honest **Assisted Publishing** workflow (validated caption + media preparation + deep-link handoff) rather than breaking the zero-spend rule or scraping private APIs.
 
 ---
 
@@ -79,9 +79,9 @@ This document records verified official developer API requirements, OAuth constr
 ### 8. X / formerly Twitter (`x`) — Assisted Publishing Default
 - **Official API:** X API v2.
 - **Pricing Reality (Verified 2026):** The traditional free publishing tier has been **discontinued**. X API v2 operates on a **pay-per-use credit model** (`$0.015` per post creation, `$0.20` per post containing a URL).
-- **Surgevanta Strategy:** To uphold the non-negotiable `$0` spending constraint, X defaults to an **Assisted Publishing workflow** (caption length validation at 280 chars, media validation, one-click copy/download, and pre-filled intent URL handoff). Direct API code will only be enabled if the user explicitly opts in and funds X API credits in the future.
+- **Surgeventa Strategy:** To uphold the non-negotiable `$0` spending constraint, X defaults to an **Assisted Publishing workflow** (caption length validation at 280 chars, media validation, one-click copy/download, and pre-filled intent URL handoff). Direct API code will only be enabled if the user explicitly opts in and funds X API credits in the future.
 
 ### 9. Reddit (`reddit`) — Assisted Publishing Default
 - **Official API:** Reddit Data API.
 - **Access Reality (Verified 2026):** Reddit closed open self-serve public API client registration; free API access (`100 QPM`) is restricted to pre-approved non-commercial and moderation applications, while commercial/scaling access requires private enterprise agreements.
-- **Surgevanta Strategy:** Default to an **Assisted Publishing workflow** (subreddit target notes, title/body validation, flair reminders, and direct submit-page handoff). Optional direct OAuth adapter can be plugged in only if the user holds an approved official non-commercial client ID.
+- **Surgeventa Strategy:** Default to an **Assisted Publishing workflow** (subreddit target notes, title/body validation, flair reminders, and direct submit-page handoff). Optional direct OAuth adapter can be plugged in only if the user holds an approved official non-commercial client ID.

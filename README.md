@@ -1,6 +1,6 @@
-# Surgevanta
+# Surgeventa
 
-Surgevanta is a self-controlled, production-minded unified social media publishing workspace inspired by Buffer's workflow, engineered under a strict **zero-spending constraint** and full database/hosting portability.
+Surgeventa is a self-controlled, production-minded unified social media publishing workspace inspired by Buffer's workflow, engineered under a strict **zero-spending constraint** and full database/hosting portability.
 
 ## Product Goals
 

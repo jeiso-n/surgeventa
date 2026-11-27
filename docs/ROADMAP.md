@@ -1,6 +1,6 @@
-# Surgevanta — Milestone Roadmap
+# Surgeventa — Milestone Roadmap
 
-Surgevanta is built in small, independently verifiable milestones. Every milestone must pass automated checks and be backed up to GitHub before starting the next.
+Surgeventa is built in small, independently verifiable milestones. Every milestone must pass automated checks and be backed up to GitHub before starting the next.
 
 | Milestone | Scope | Status |
 | --- | --- | --- |

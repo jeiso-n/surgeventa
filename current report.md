@@ -1,4 +1,4 @@
-# Surgevanta — Current Project Report
+# Surgeventa — Current Project Report
 
 **Last Updated:** 2026-11-26  
 **Active Milestone:** Milestone 1 Complete -> Milestone 2 Database Foundation Wired  
@@ -9,7 +9,7 @@
 
 ## 1. Objective & Current State
 
-Surgevanta is a self-controlled, zero-spending unified social media publishing workspace built for portability across PostgreSQL (Neon Free Tier) and standard Node/Next.js hosting.
+Surgeventa is a self-controlled, zero-spending unified social media publishing workspace built for portability across PostgreSQL (Neon Free Tier) and standard Node/Next.js hosting.
 
 Milestone 1 established the Next.js 16 + TypeScript + Tailwind v4 architecture, design system, security primitives, and verified 9-platform capability matrix. Neon Lakebase Postgres (`broad-darkness-90056929` / branch `production`) is now linked, configured locally via gitignored `.env.local`, migrated via Drizzle Kit (`6/6` tables live on PostgreSQL `18.7`), and verified end-to-end through the production Next.js server (`/` and `GET /api/health`).
 

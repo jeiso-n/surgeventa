@@ -17,7 +17,7 @@ export interface DatabaseHealthResult {
 }
 
 declare global {
-  var __surgevantaPool: Pool | undefined;
+  var __surgeventaPool: Pool | undefined;
 }
 
 /**
@@ -36,8 +36,8 @@ export function getDb(): Database {
   }
 
   const env = parseEnv();
-  if (!globalThis.__surgevantaPool) {
-    globalThis.__surgevantaPool = new Pool({
+  if (!globalThis.__surgeventaPool) {
+    globalThis.__surgeventaPool = new Pool({
       connectionString: env.DATABASE_URL,
       // Keep pool compact for serverless environments and Neon Free Tier compute limits.
       max: 5,
@@ -46,7 +46,7 @@ export function getDb(): Database {
     });
   }
 
-  return drizzle(globalThis.__surgevantaPool, { schema });
+  return drizzle(globalThis.__surgeventaPool, { schema });
 }
 
 /**

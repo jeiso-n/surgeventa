@@ -15,7 +15,7 @@ const jetBrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Surgevanta — Unified Social Publishing Workspace",
+  title: "Surgeventa — Unified Social Publishing Workspace",
   description:
     "Self-controlled social media publishing workspace for composing, validating, scheduling, and tracking multi-platform content under zero-spend constraints.",
 };

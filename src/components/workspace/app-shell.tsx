@@ -46,7 +46,7 @@ export function AppShell({ children }: AppShellProps) {
             </div>
             <div>
               <span className="text-sm font-semibold tracking-tight block leading-none">
-                Surgevanta
+                Surgeventa
               </span>
               <span className="text-[11px] text-muted font-mono">v0.1 · Foundation</span>
             </div>

@@ -1,4 +1,4 @@
-# Surgevanta — Technical Architecture
+# Surgeventa — Technical Architecture
 
 ## 1. Architectural Principles
 
