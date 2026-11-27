@@ -25,8 +25,27 @@
 | Database | **Neon PostgreSQL (Free Plan)** | `$0/month`, no credit card required, hard caps (no surprise bills), standard PostgreSQL compatibility. |
 | ORM & Migrations | **Drizzle ORM + `pg` (`node-postgres`) + Drizzle Kit** | Lightweight, type-safe SQL migrations, zero codegen overhead, works identically on Neon's PgBouncer pooler and local Docker/standard PostgreSQL. |
 | Validation | **Zod** | Single-source schema validation for environment variables, API inputs, and composer payloads. |
-| Auth *(Milestone 2)* | **Better Auth (database sessions via Drizzle)** | Native Drizzle + PostgreSQL adapter, TypeScript-first, supports database-backed revocable sessions, extensible to 2FA and multi-workspace roles. |
-| Testing | **Vitest (unit/integration) + Playwright (E2E in M2+)** | Fast native TypeScript unit tests + deterministic browser verification for UI flows. |
+| Auth *(Milestone 2)* | **Better Auth (`better-auth`, Drizzle PostgreSQL adapter)** | Native Drizzle + PostgreSQL adapter, TypeScript-first, scrypt password hashing, revocable database-backed sessions, secure cookies (`nextCookies`) for web plus bearer-token support for future mobile clients. |
+| Testing | **Vitest (unit/integration) + Playwright (E2E)** | Fast native TypeScript unit/integration tests + deterministic Chromium browser verification for auth, settings, and workspace flows. |
+
+---
+
+## 2B. Cross-Device Product Architecture (Web + Planned Flutter Android App)
+
+Surgeventa is architected as a **cross-device platform** sharing a single authoritative backend and PostgreSQL database:
+
+- **Primary Web Workspace (Active):** Next.js App Router (`src/app/`) serving the full desktop/laptop dashboard and mobile-responsive web interface.
+- **Planned Android Application (Future Milestone — Not Yet Implemented):** Native installable Android app built in **Flutter** using **Android Studio**.
+
+### Non-Negotiable Cross-Device Boundaries
+1. **Single Authoritative Backend:** Both the Next.js web workspace and the future Flutter Android client communicate exclusively with the same Surgeventa server API (`/api/auth/*` and versioned `/api/v1/*` JSON Route Handlers).
+2. **No Duplicated Business Logic:** Validation rules, timezone scheduling conversions, publishing state transitions, OAuth token handling, and authorization checks live once on the server. Clients render UI and collect user intent.
+3. **Zero Direct Database Access from Android:** The Flutter app will **never** connect directly to Neon PostgreSQL, hold database credentials, or maintain a second independent database.
+4. **Decoupled JSON API Contract:** Versioned endpoints under `/api/v1/*` return clean JSON payloads with explicit HTTP status codes (`200`, `201`, `400`, `401`, `403`, `409`, `500`) and never depend on Next.js React Server Component payloads, Server Action internals, or HTML scraping.
+5. **Cross-Client Authentication Strategy:**
+   - **Web Client:** Uses Better Auth `HttpOnly`, `SameSite=Lax` (`Secure` in production) session cookies managed via `nextCookies()`.
+   - **Flutter Android Client (Planned):** Authenticates against the same Better Auth `/api/auth/*` endpoints using the Better Auth `bearer()` plugin, storing the session token in Android Keystore (`flutter_secure_storage`) and sending `Authorization: Bearer <token>` on `/api/v1/*` requests. Session revocation in Settings immediately invalidates both web and mobile sessions stored in `auth_sessions`.
+6. **Shared Domain State:** User profiles, timezones, publishing preferences, connected social accounts, drafts, media metadata, scheduled posts, and publishing history remain 100% synchronized across computer and Android devices because both read and write through the same PostgreSQL-backed API.
 
 ---
 

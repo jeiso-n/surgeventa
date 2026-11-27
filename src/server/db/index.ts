@@ -74,6 +74,9 @@ export async function checkDatabaseHealth(): Promise<DatabaseHealthResult> {
           WHERE table_schema = 'public'
             AND table_name IN (
               'users',
+              'auth_sessions',
+              'auth_accounts',
+              'auth_verifications',
               'social_accounts',
               'media_assets',
               'posts',

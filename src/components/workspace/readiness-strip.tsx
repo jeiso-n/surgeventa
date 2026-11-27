@@ -41,7 +41,7 @@ export async function ReadinessStrip() {
   const dbDetail = !dbHealth.configured
     ? "Provide DATABASE_URL before Milestone 2"
     : dbHealth.connected
-      ? `PostgreSQL ${dbHealth.serverVersion?.split(" ")[0] ?? ""} · ${dbHealth.schemaTablesCount ?? 0}/6 tables · ${dbHealth.latencyMs ?? 0}ms`
+      ? `PostgreSQL ${dbHealth.serverVersion?.split(" ")[0] ?? ""} · ${dbHealth.schemaTablesCount ?? 0}/9 tables · ${dbHealth.latencyMs ?? 0}ms`
       : (dbHealth.error ?? "Unable to reach Neon PostgreSQL");
 
   const metrics: StatusMetric[] = [
@@ -67,9 +67,9 @@ export async function ReadinessStrip() {
       icon: <Lock className="h-4 w-4" aria-hidden="true" />,
     },
     {
-      label: "Session Auth Secret",
-      value: readiness.authSecretConfigured ? "Configured" : "Pending Setup",
-      detail: "Ready for Milestone 2 authentication",
+      label: "Session Auth",
+      value: readiness.authSecretConfigured ? "Better Auth Active" : "Pending Setup",
+      detail: "Database-backed revocable sessions",
       state: readiness.authSecretConfigured ? "ready" : "pending",
       icon: <KeyRound className="h-4 w-4" aria-hidden="true" />,
     },
